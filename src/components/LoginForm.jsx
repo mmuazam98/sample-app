@@ -10,6 +10,7 @@ export default function LoginForm({
     const handleSubmit = (e) => {
         e.preventDefault();
         // check if email is test@example.com and password is Abcd123!
+        // Additional: check if email is valid (hint: using regex)
 
         // if true => setIsLoggedIn(true)
 
