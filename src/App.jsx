@@ -5,14 +5,8 @@ import HomePage from "./components/HomePage";
 
 // Additional Task: Preserve email and isLoggedIn even after page is reloaded. (Hint: use localStorage)
 
-function App() {
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+export default function App() {
+ const [isLoggedIn, setIsLoggedIn] = useState(false);
 
-  return <>
-    {
-      !isLoggedIn ? <LoginForm setIsLoggedIn={setIsLoggedIn} /> : <HomePage />
-    }
-  </>
+ return <>{isLoggedIn ? <HomePage loggedOut={setIsLoggedIn} /> : <LoginForm setIsLoggedIn={setIsLoggedIn} />}</>;
 }
-
-export default App;
