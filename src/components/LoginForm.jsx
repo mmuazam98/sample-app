@@ -1,40 +1,44 @@
 import { useState, useRef } from "react";
+import { validEmail } from "./RegEx.jsx";
+
+//  ternary operator on visibilty on and off with function
 
 export default function LoginForm({ setIsLoggedIn }) {
- // state for email and password
- const [email, setEmail] = useState("");
- const [password, setPassword] = useState("");
-
  const handleSubmit = (e) => {
   e.preventDefault();
-  // check if email is test@example.com and password is Abcd123!
-  // Additional: check if email is valid (hint: using regex)
-
-  // if true => setIsLoggedIn(true)
-
-  // else alert saying invalid username or password
  };
 
- //  userRef to get value of email adn password then use == & regex to check validity
-
  const [emailInput, setEmailInput] = useState("");
- function updateEmail() {
-  setEmailInput(event.target.value);
+ function updateEmail(e) {
+  setEmailInput(e.target.value);
  }
 
  const [passInput, setPassInput] = useState("");
- function updatePass() {
-  setPassInput(event.target.value);
+ function updatePass(e) {
+  setPassInput(e.target.value);
  }
 
  function onSubmit() {
-  console.log(emailInput);
-  if (emailInput === "test@example.com" || passInput === "Abcd123") {
+  if (!validEmail.test(emailInput)) {
+   alert("Invalid Email Format");
+  } else if (emailInput === "test@example.com" || passInput === "Abcd123") {
    setIsLoggedIn(true);
   } else {
    alert("Invalid Username or Password");
   }
  }
+
+ const [eye, setEye] = useState(true);
+ const [passwordType, setPasswordType] = useState("password");
+ function visibilityOn() {
+  setPasswordType("text");
+  setEye(false);
+ }
+ function visibilityOff() {
+  setPasswordType("password");
+  setEye(true);
+ }
+
  return (
   <section className="bg-gray-50 dark:bg-gray-900 h-screen">
    <div className="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">
@@ -63,10 +67,21 @@ export default function LoginForm({ setIsLoggedIn }) {
        </div>
        <div>
         <label htmlFor="password" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
-         Password
+         <div className="flex justify-between">
+          Password
+          {eye ? (
+           <span className="material-symbols-outlined self-baseline mx-2" onClick={visibilityOn}>
+            visibility
+           </span>
+          ) : (
+           <span className="material-symbols-outlined mx-2" onClick={visibilityOff}>
+            visibility_off{" "}
+           </span>
+          )}
+         </div>
         </label>
         <input
-         type="password"
+         type={passwordType}
          name="password"
          id="password"
          value={passInput}

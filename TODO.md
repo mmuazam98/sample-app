@@ -6,15 +6,17 @@ Project Description
 
 ### Todo
 
-- [ ] Home page should show the loggedIn email ID,  
 - [ ] Preserve email and isLoggedIn even after page is reloaded.  
+ (use LocalStorage)  
 
 ### In Progress
 
-- [ ] check email password and also validity  
+- [ ] Home page should show the loggedIn email ID,  
 
 ### Done ✓
 
+- [x] visibility of password using eye  
+- [x] check email password and also validity  
 - [x] add homePage  
 - [x] on hover over about a div is displayed  
 - [x] add functionality to log out  

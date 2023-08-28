@@ -1,7 +1,9 @@
 // Home page should show the loggedIn email ID, and have a button called logout.
 import React, { useState } from "react";
 
-export default function HomePage(props) {
+export default function HomePage({ setIsLoggedIn }) {
+ //  console.log(emailInput);
+
  let [mouse, setMouse] = useState(false);
  function Info() {
   setMouse(true);
@@ -12,7 +14,7 @@ export default function HomePage(props) {
 
  function logOut() {
   console.log("logOut");
-  props.loggedOut(false);
+  setIsLoggedIn(false);
  }
 
  return (

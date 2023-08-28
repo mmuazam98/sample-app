@@ -8,5 +8,5 @@ import HomePage from "./components/HomePage";
 export default function App() {
  const [isLoggedIn, setIsLoggedIn] = useState(false);
 
- return <>{isLoggedIn ? <HomePage loggedOut={setIsLoggedIn} /> : <LoginForm setIsLoggedIn={setIsLoggedIn} />}</>;
+ return <>{isLoggedIn ? <HomePage setIsLoggedIn={setIsLoggedIn} /> : <LoginForm setIsLoggedIn={setIsLoggedIn} />}</>;
 }
