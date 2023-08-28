@@ -6,17 +6,17 @@ export default function LoginForm({ setIsLoggedIn }) {
  };
 
  const [emailInput, setEmailInput] = useState("");
- updateEmail = (e) => {
+ const updateEmail = (e) => {
   setEmailInput(e.target.value);
  };
 
  const [passInput, setPassInput] = useState("");
- updatePass = (e) => {
+ const updatePass = (e) => {
   setPassInput(e.target.value);
  };
 
- validEmail = new RegExp("^[a-zA-Z0-9._:$!%-]+@[a-zA-Z0-9.-]+.[a-zA-Z]$");
- onSubmit = () => {
+ const validEmail = new RegExp("^[a-zA-Z0-9._:$!%-]+@[a-zA-Z0-9.-]+.[a-zA-Z]$");
+ const onSubmit = () => {
   if (!validEmail.test(emailInput)) {
    alert("Invalid Email Format");
   } else if (emailInput === "test@example.com" || passInput === "Abcd123") {
@@ -28,11 +28,11 @@ export default function LoginForm({ setIsLoggedIn }) {
 
  const [eye, setEye] = useState(true);
  const [passwordType, setPasswordType] = useState("password");
- visibilityOn = () => {
+ const visibilityOn = () => {
   setPasswordType("text");
   setEye(false);
  };
- visibilityOff = () => {
+ const visibilityOff = () => {
   setPasswordType("password");
   setEye(true);
  };

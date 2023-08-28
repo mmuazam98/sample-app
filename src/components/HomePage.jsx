@@ -3,14 +3,14 @@ import React, { useState } from "react";
 
 export default function HomePage({ setIsLoggedIn }) {
  const [mouse, setMouse] = useState(false);
- Info = () => {
+ const Info = () => {
   setMouse(true);
  };
- revInfo = () => {
+ const revInfo = () => {
   setMouse(false);
  };
 
- logOut = () => {
+ const logOut = () => {
   setIsLoggedIn(false);
  };
 
