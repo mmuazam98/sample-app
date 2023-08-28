@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
 
 export default function LoginForm({ setIsLoggedIn }) {
  // state for email and password
@@ -16,15 +16,30 @@ export default function LoginForm({ setIsLoggedIn }) {
  };
 
  //  userRef to get value of email adn password then use == & regex to check validity
- function onSubmit() {
-  setIsLoggedIn(true);
+
+ const [emailInput, setEmailInput] = useState("");
+ function updateEmail() {
+  setEmailInput(event.target.value);
  }
 
+ const [passInput, setPassInput] = useState("");
+ function updatePass() {
+  setPassInput(event.target.value);
+ }
+
+ function onSubmit() {
+  console.log(emailInput);
+  if (emailInput === "test@example.com" || passInput === "Abcd123") {
+   setIsLoggedIn(true);
+  } else {
+   alert("Invalid Username or Password");
+  }
+ }
  return (
   <section className="bg-gray-50 dark:bg-gray-900 h-screen">
    <div className="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">
     <a href="#" className="flex items-center mb-6 text-2xl font-semibold text-gray-900 dark:text-white">
-     <span class="material-symbols-outlined mx-2">diversity_1</span>
+     <span className="material-symbols-outlined mx-2">diversity_1</span>
      MnM
     </a>
     <div className="w-full bg-white rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0 dark:bg-gray-800 dark:border-gray-700">
@@ -39,6 +54,8 @@ export default function LoginForm({ setIsLoggedIn }) {
          type="email"
          name="email"
          id="email"
+         value={emailInput}
+         onChange={updateEmail}
          className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
          placeholder="name@company.com"
          required=""
@@ -52,6 +69,8 @@ export default function LoginForm({ setIsLoggedIn }) {
          type="password"
          name="password"
          id="password"
+         value={passInput}
+         onChange={updatePass}
          placeholder="••••••••"
          className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
          required=""
