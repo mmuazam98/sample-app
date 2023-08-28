@@ -2,20 +2,17 @@
 import React, { useState } from "react";
 
 export default function HomePage({ setIsLoggedIn }) {
- //  console.log(emailInput);
-
- let [mouse, setMouse] = useState(false);
- function Info() {
+ const [mouse, setMouse] = useState(false);
+ Info = () => {
   setMouse(true);
- }
- function revInfo() {
+ };
+ revInfo = () => {
   setMouse(false);
- }
+ };
 
- function logOut() {
-  console.log("logOut");
+ logOut = () => {
   setIsLoggedIn(false);
- }
+ };
 
  return (
   <section className="bg-gray-50 dark:bg-gray-900 h-screen">
@@ -34,7 +31,6 @@ export default function HomePage({ setIsLoggedIn }) {
         User password
         <span className="material-symbols-outlined hidden mx-2">visibility</span>
         <span className="material-symbols-outlined mx-2">visibility_off</span>
-        {/* use use effect with empty for hidden and with hidden.onclick for show */}
        </div>
       </div>
      ) : (
@@ -42,9 +38,7 @@ export default function HomePage({ setIsLoggedIn }) {
      )}
     </div>
    </nav>
-   {mouse ? console.log("mouse over") : null}
 
-   {/* footer */}
    <footer>
     <button onClick={logOut} className="absolute bottom-0 right-0 bg-red-600 text-white w-48 h-10 m-3 rounded-sm hover:bg-gray-400 duration-300 ease-in-out flex  justify-center items-center">
      <span className="material-symbols-outlined">logout</span> Log Out

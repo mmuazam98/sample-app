@@ -1,7 +1,4 @@
 import { useState, useRef } from "react";
-import { validEmail } from "./RegEx.jsx";
-
-//  ternary operator on visibilty on and off with function
 
 export default function LoginForm({ setIsLoggedIn }) {
  const handleSubmit = (e) => {
@@ -9,16 +6,17 @@ export default function LoginForm({ setIsLoggedIn }) {
  };
 
  const [emailInput, setEmailInput] = useState("");
- function updateEmail(e) {
+ updateEmail = (e) => {
   setEmailInput(e.target.value);
- }
+ };
 
  const [passInput, setPassInput] = useState("");
- function updatePass(e) {
+ updatePass = (e) => {
   setPassInput(e.target.value);
- }
+ };
 
- function onSubmit() {
+ validEmail = new RegExp("^[a-zA-Z0-9._:$!%-]+@[a-zA-Z0-9.-]+.[a-zA-Z]$");
+ onSubmit = () => {
   if (!validEmail.test(emailInput)) {
    alert("Invalid Email Format");
   } else if (emailInput === "test@example.com" || passInput === "Abcd123") {
@@ -26,18 +24,18 @@ export default function LoginForm({ setIsLoggedIn }) {
   } else {
    alert("Invalid Username or Password");
   }
- }
+ };
 
  const [eye, setEye] = useState(true);
  const [passwordType, setPasswordType] = useState("password");
- function visibilityOn() {
+ visibilityOn = () => {
   setPasswordType("text");
   setEye(false);
- }
- function visibilityOff() {
+ };
+ visibilityOff = () => {
   setPasswordType("password");
   setEye(true);
- }
+ };
 
  return (
   <section className="bg-gray-50 dark:bg-gray-900 h-screen">
