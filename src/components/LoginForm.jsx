@@ -1,16 +1,14 @@
-import { useState, useRef } from "react";
+import { useState } from "react";
 
-export default function LoginForm({ setIsLoggedIn }) {
+export default function LoginForm({ setIsLoggedIn, emailInput, setEmailInput, passInput, setPassInput }) {
  const handleSubmit = (e) => {
   e.preventDefault();
  };
 
- const [emailInput, setEmailInput] = useState("");
  const updateEmail = (e) => {
   setEmailInput(e.target.value);
  };
 
- const [passInput, setPassInput] = useState("");
  const updatePass = (e) => {
   setPassInput(e.target.value);
  };
@@ -27,14 +25,10 @@ export default function LoginForm({ setIsLoggedIn }) {
  };
 
  const [eye, setEye] = useState(true);
- const [passwordType, setPasswordType] = useState("password");
- const visibilityOn = () => {
-  setPasswordType("text");
-  setEye(false);
- };
- const visibilityOff = () => {
-  setPasswordType("password");
-  setEye(true);
+ const visibility = () => {
+  setEye((prevEye) => {
+   return !prevEye;
+  });
  };
 
  return (
@@ -65,21 +59,13 @@ export default function LoginForm({ setIsLoggedIn }) {
        </div>
        <div>
         <label htmlFor="password" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
-         <div className="flex justify-between">
+         <div className="flex justify-between" onClick={visibility}>
           Password
-          {eye ? (
-           <span className="material-symbols-outlined self-baseline mx-2" onClick={visibilityOn}>
-            visibility
-           </span>
-          ) : (
-           <span className="material-symbols-outlined mx-2" onClick={visibilityOff}>
-            visibility_off{" "}
-           </span>
-          )}
+          {eye ? <span className="material-symbols-outlined self-baseline mx-2">visibility</span> : <span className="material-symbols-outlined mx-2">visibility_off </span>}
          </div>
         </label>
         <input
-         type={passwordType}
+         type={eye ? "password" : "text"}
          name="password"
          id="password"
          value={passInput}
